@@ -1,0 +1,28 @@
+
+body {
+    background-color: black;
+}
+
+h1 {
+    text-align: center;
+    color: blue;
+    font-size: 40px;
+}
+
+img {
+    width: 900px;
+    
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+p {
+    font-size: 18px;
+    color: white;
+    width: 900px;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
