@@ -4,6 +4,6 @@ int main(){
     int idade;
     peso = 2000;
     idade = 18;
-    printf("%i\n", peso);
-    printf("%i", idade);
+    printf("%i\n%i", peso, idade);
+    // printf("%i", idade);
 }
