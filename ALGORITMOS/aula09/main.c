@@ -23,7 +23,7 @@
 //     printf("Insira o tempo em anos: \n");
 //     scanf("%lf", &t);
 
-//     m = c * (1 + (i / 100)) * t;
+//     m = c * pow((1 + (i / 100)), t);
 
 //     printf("O montante do capital é: %.2lf", m);
 // }
