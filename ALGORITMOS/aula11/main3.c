@@ -2,23 +2,18 @@
 
 int main()
 {
-    int num;
-    printf("digite um numero: ");
-    scanf("%d", &num);
-    if (num < 0)
+    int total = 0, n1, numEntradas = 0;
+
+    while (1)
     {
-        printf("o numero e negativo ");
+        scanf("%d", &n1);
+        if (n1 < 0)
+        {
+            break;
+        }
+        total += n1;
+        numEntradas++;
     }
-    else if (num > 0)
-    {
-        printf("o numero e positivo ");
-    }
-    else if (num == 0)
-    {
-        printf("o numero e zero ");
-    }
-    else
-    {
-        printf("erro! ");
-    }
+    float media = total / numEntradas;
+    printf("a media da soma %i e %f", total, media);
 }

@@ -1,13 +1,10 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int main(){
-    int num;
-    printf("digite um numero: ");
-    scanf("%d", &num);
-    if (num%2==0){
-        printf("o numero e par");
-    }else {
-        printf("o numero e impar");
+int main() {
+    unsigned int i = 2, n1;
+    scanf("%d", &n1);
+    while (i <= n1) {
+        printf("%d \n", i);
+        i+=2;
     }
 }
