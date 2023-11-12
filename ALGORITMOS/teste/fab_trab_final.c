@@ -3,15 +3,35 @@
 #include <stdlib.h>
 // criar um map chave valor
 
+struct myDados
+{
+    char usuario[16];
+    char senha[16];
+    char nome[16];
+    char telefone[16];
+    char nomePet[10][16];
+    int numPet;
+    int banhoETosa[10][16];
+    int numBanho;
+    char consulta[10][16];
+    int numConsulta;
+};
 
+//[as 7 coisas guardadas, [0]usuario, [1]senha, [2]nome, [3]telefone, [4]pet, [5]banho, [6]consulta] [10 usuarios] [10 pets se precisar, o resto coloca tudo no 0] [ate 15 caracteres]
 
+// comecar no main e nele iniciar todas as variaveis e nao voltar nele
+//  funcionalizar tudouggxxz
+int main()
+{
+    struct myDados veetor[10];
+    int boll = 0;
+    inicio(veetor, boll);
+    return 0;
+}
 
-int main(char arrValores[7][10][10][16], int boll)
+void inicio(struct myDados veetor[10], int boll)
 {
     system("cls");
-    puts("\n MAIN \n");
-    // int boll = 0;
-
     // if (arrValores[0][0] != 'teste' )
     // {
     //     // printf("%s \n", arrValores[0][0]);
@@ -34,11 +54,10 @@ int main(char arrValores[7][10][10][16], int boll)
     //     }
     // }
 
-    cadOrLogin(arrValores, boll);
-    return 0;
+    cadOrLogin(veetor, boll);
 }
 
-void cadOrLogin(char arrValores[7][10][10][16], int boll)
+void cadOrLogin(struct myDados veetor[10], int boll)
 {
     system("cls");
     int value;
@@ -53,11 +72,11 @@ void cadOrLogin(char arrValores[7][10][10][16], int boll)
     {
     case 1:
         system("cls");
-        cadastro();
+        cadastro(veetor, boll);
         break;
     case 2:
         system("cls");
-        login(arrValores, boll);
+        login(veetor, boll);
         // teste(arrValores);
         break;
     case 3:
@@ -67,7 +86,7 @@ void cadOrLogin(char arrValores[7][10][10][16], int boll)
     default:
         system("cls");
         puts("Comando nao reconhecido \n");
-        cadOrLogin(arrValores, boll);
+        cadOrLogin(veetor, boll);
         break;
     }
 }
@@ -78,37 +97,37 @@ void cadOrLogin(char arrValores[7][10][10][16], int boll)
 //     printf("%s \n", arrValores[1][0][0]);
 // }
 
-void cadastro()
+void cadastro(struct myDados veetor[10], int boll)
 {
     // char usuarioCadastro[16];
     // char senhaCadastro[16];
+
     system("cls");
-    char arrValores[7][10][10][16];
     int i = 0;
-    int boll = 1;
     puts("digite seu usuario: ");
-    fgets(arrValores[0][i][0], 15, stdin);
+    fgets(veetor[0].usuario, 15, stdin);
+    fflush(stdin);
     // while ((ch = getchar()) != '\n' && ch != EOF);
     puts("digite sua senha: ");
-    fgets(arrValores[1][i][0], 15, stdin);
+    fgets(veetor[0].senha, 15, stdin);
     fflush(stdin);
     // while ((ch = getchar()) != '\n' && ch != EOF);
     // if(senha == ){
     //     Cadastro();
     // }
-    arrValores[0][i][0][strcspn(arrValores[0][i][0], "\n")] = '\0';
-    arrValores[1][i][0][strcspn(arrValores[1][i][0], "\n")] = '\0';
+    veetor[0].usuario[strcspn(veetor[0].usuario, "\n")] = '\0';
+    veetor[0].senha[strcspn(veetor[0].senha, "\n")] = '\0';
     // arrValores[0][i][0] = usuarioCadastro;
     // for
-
+    boll = 1;
     system("cls");
-    main(arrValores, boll);
+    inicio(veetor, boll);
 }
 
-void login(char arrValores[7][10][10][16], int boll)
+void login(struct myDados veetor[10], int boll)
 {
     system("cls");
-    int i = 0;
+    // int i = 0;
     char usuarioLogin[16];
     char senhaLogin[16];
     puts("digite seu usuario: ");
@@ -122,22 +141,19 @@ void login(char arrValores[7][10][10][16], int boll)
     // }
     if (boll == 1)
     {
-        puts("foi \n");
         usuarioLogin[strcspn(usuarioLogin, "\n")] = '\0';
         senhaLogin[strcspn(senhaLogin, "\n")] = '\0';
-        puts("foi 2 \n");
-        int usuarioVerificado = strcmp(arrValores[0][0][0], usuarioLogin);
-        puts("foi 3\n");
-        int senhaVerificada = strcmp(arrValores[1][i][0], senhaLogin);
+        int usuarioVerificado = strcmp(veetor[0].usuario, usuarioLogin);
+        int senhaVerificada = strcmp(veetor[0].senha, senhaLogin);
         if (senhaVerificada == 0 && usuarioVerificado == 0)
         {
-            menu(arrValores, 0);
-            // main();
+            menu(veetor);
+            // inicio();
         }
         else
         {
             system("cls");
-            puts("Login incorreta!\n");
+            puts("Login incorreta! boll\n");
 
             int value;
             puts("1 | Tentar novamente");
@@ -150,13 +166,15 @@ void login(char arrValores[7][10][10][16], int boll)
             {
             case 1:
                 system("cls");
-                login(arrValores, boll);
+                login(veetor, boll);
                 break;
             case 2:
                 system("cls");
-                main(arrValores, boll);
+                inicio(veetor, boll);
                 break;
             default:
+                puts("erro");
+                login(veetor, boll);
                 break;
             }
         }
@@ -177,13 +195,15 @@ void login(char arrValores[7][10][10][16], int boll)
         {
         case 1:
             system("cls");
-            login(arrValores, boll);
+            login(veetor, boll);
             break;
         case 2:
             system("cls");
-            main(arrValores, boll);
+            inicio(veetor, boll);
             break;
         default:
+            puts("erro");
+            login(veetor, boll);
             break;
         }
     }
@@ -194,7 +214,7 @@ void nomePetShop()
     puts("Super PetShop Gustavo BCC");
 }
 
-menu(char arrValores[7][10][10][16], int totalPet)
+menu(struct myDados veetor[10])
 {
     system("cls");
     nomePetShop();
@@ -212,43 +232,43 @@ menu(char arrValores[7][10][10][16], int totalPet)
     {
     case 1:
         system("cls");
-        cadastrarCliente(arrValores);
+        cadastrarCliente(veetor);
         break;
     case 2:
         system("cls");
-        banhoTosa(arrValores);
+        banhoTosa(veetor);
         break;
     // case 3:
     //     system("cls");
-    //     main(usuario, senha);
+    //     inicio(usuario, senha);
     //     break;
     // case 4:
     //     system("cls");
-    //     main(usuario, senha);
+    //     inicio(usuario, senha);
     //     break;
     case 5:
         system("cls");
-        // puts("Volte sempre ao Super PetShop Gustavo BCC");
-        main(arrValores, 1);
+        puts("Volte sempre ao Super PetShop Gustavo BCC");
+        inicio(veetor, 1);
         break;
     default:
         system("cls");
         puts("Opcao incorreta \n");
-        menu(arrValores, totalPet);
+        menu(veetor);
         break;
     }
 }
 
-void cadastrarCliente(char arrValores[7][10][10][16])
+void cadastrarCliente(struct myDados veetor[10])
 {
     system("cls");
     nomePetShop();
     printf("\nCadastro de cliente\n");
     printf("\nDigite seu nome: \n");
-    fgets(arrValores[2][0][0], 15, stdin);
+    fgets(veetor[0].nome, 15, stdin);
     fflush(stdin);
     printf("\nDigite seu telefone: (so os numeros)\n");
-    fgets(arrValores[3][0][0], 15, stdin);
+    fgets(veetor[0].telefone, 15, stdin);
     fflush(stdin);
     char car;
     // int i = 0;
@@ -257,7 +277,7 @@ void cadastrarCliente(char arrValores[7][10][10][16])
     {
         system("cls");
         printf("\nDigite o nome do seu pet [max 10]\n");
-        fgets(arrValores[4][0][totalPet], 15, stdin);
+        fgets(veetor[0].nomePet[totalPet], 15, stdin);
         fflush(stdin);
         puts("continuar? \n[s] para sim\n[n] para nao\n");
         scanf("%c", &car);
@@ -269,44 +289,44 @@ void cadastrarCliente(char arrValores[7][10][10][16])
         puts("maximo de pets cadastrados");
     }
     system("cls");
-    menu(arrValores, totalPet);
+    menu(veetor);
 }
 
-void banhoTosa(char arrValores[7][10][10][16])
+void banhoTosa(struct myDados veetor[10])
 {
-    system("cls");
-    nomePetShop();
+    // system("cls");
+    // nomePetShop();
 
-    char car;
-    int i = 0;
-    do
-    {
-        system("cls");
-        for (int j = 0; (sizeof(arrValores[4][0]) / sizeof(arrValores[4][0]) ) > j; j++)
-        {
-            if(arrValores[4][0][j] >=0 || arrValores[4][0][j] <0){
-                printf("\n cu \n");
-                puts(arrValores[4][0][j]);
+    // char car;
+    // int i = 0;
+    // do
+    // {
+    //     system("cls");
+    //     for (int j = 0; (sizeof(arrValores[4][0]) / sizeof(arrValores[4][0])) > j; j++)
+    //     {
+    //         if (arrValores[4][0][j] >= 0 || arrValores[4][0][j] < 0)
+    //         {
+    //             printf("\n cu \n");
+    //             puts(arrValores[4][0][j]);
+    //         }
+    //         // else {
 
-            } 
-            // else {
-
-            //     puts(arrValores[4][0][j]);
-            // }
-        }
-        // system("cls");
-        printf("\nDigite o nome do seu pet [max 10]\n");
-        fgets(arrValores[3][0][i], 15, stdin);
-        fflush(stdin);
-        puts("continuar? \n[s] para sim\n[n] para nao\n");
-        scanf("%c", &car);
-        getchar();
-        i++;
-    } while (car == 's' && i <= 10);
-    if (i == 10)
-    {
-        puts("maximo de pets cadastrados");
-    }
-    system("cls");
-    main(arrValores, 1);
+    //         //     puts(arrValores[4][0][j]);
+    //         // }
+    //     }
+    //     // system("cls");
+    //     printf("\nDigite o nome do seu pet [max 10]\n");
+    //     fgets(arrValores[3][0][i], 15, stdin);
+    //     fflush(stdin);
+    //     puts("continuar? \n[s] para sim\n[n] para nao\n");
+    //     scanf("%c", &car);
+    //     getchar();
+    //     i++;
+    // } while (car == 's' && i <= 10);
+    // if (i == 10)
+    // {
+    //     puts("maximo de pets cadastrados");
+    // }
+    // system("cls");
+    // // inicio(arrValores, 1); ------------------
 }
