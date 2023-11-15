@@ -517,6 +517,7 @@ void relatorioGeral(struct myDados veetor[10], int usuarioConectado)
     puts("precione qualquer tecla para voltar ao menu");
     char teste;
     scanf("%c", &teste);
+    system("cls");
     menu(veetor, usuarioConectado);
 }
 
@@ -525,10 +526,10 @@ void diaConsulta(struct myDados veetor[10], int usuarioConectado, int j, char *t
     switch (veetor[usuarioConectado].consulta[j - 1][1])
     {
     case 1:
-        printf(" consulta para o pet %s para a quarta com o dr. %s\n", veetor[usuarioConectado].nomePet[veetor[usuarioConectado].consulta[j - 1][0] - 1], text);
+        printf(" consulta para o pet %s para a quarta com o dr. %s \n", veetor[usuarioConectado].nomePet[veetor[usuarioConectado].consulta[j - 1][0] - 1], text);
         break;
     case 2:
-        printf(" consulta para o pet %s para o sabado com o dr. %s\n", veetor[usuarioConectado].nomePet[veetor[usuarioConectado].consulta[j - 1][0] - 1], text);
+        printf(" consulta para o pet %s para o sabado com o dr. %s \n", veetor[usuarioConectado].nomePet[veetor[usuarioConectado].consulta[j - 1][0] - 1], text);
         break;
     default:
         puts("erro!");
