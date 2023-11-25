@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct myDados
+typedef struct myDados
 {
     char usuario[16];
     char senha[16];
@@ -15,25 +15,25 @@ struct myDados
     int numBanho;
     int consulta[10][3];
     int numConsulta;
-};
+} myDados;
 
 //[as 7 coisas guardadas, [0]usuario, [1]senha, [2]nome, [3]telefone, [4]pet, [5]banho, [6]consulta] [10 usuarios] [10 pets se precisar, o resto coloca tudo no 0] [ate 15 caracteres]
 
 int main()
 {
-    struct myDados veetor[10];
+    myDados veetor[10];
     int numUsuarios = 0;
     inicio(veetor, numUsuarios);
     return 0;
 }
 
-void inicio(struct myDados veetor[10], int numUsuarios)
+void inicio(myDados veetor[10], int numUsuarios)
 {
     system("cls");
     cadOrLogin(veetor, numUsuarios);
 }
 
-void cadOrLogin(struct myDados veetor[10], int numUsuarios)
+void cadOrLogin(myDados veetor[10], int numUsuarios)
 {
     system("cls");
     int value;
@@ -66,15 +66,15 @@ void cadOrLogin(struct myDados veetor[10], int numUsuarios)
     }
 }
 
-void cadastro(struct myDados veetor[10], int numUsuarios)
+void cadastro(myDados veetor[10], int numUsuarios)
 {
     system("cls");
     int i = 0;
     puts("digite seu usuario: ");
-    fgets(veetor[numUsuarios].usuario, 15, stdin);
+    fgets(veetor[numUsuarios].usuario, 16, stdin);
     fflush(stdin);
     puts("digite sua senha: ");
-    fgets(veetor[numUsuarios].senha, 15, stdin);
+    fgets(veetor[numUsuarios].senha, 16, stdin);
     fflush(stdin);
     veetor[numUsuarios].usuario[strcspn(veetor[numUsuarios].usuario, "\n")] = '\0';
     veetor[numUsuarios].senha[strcspn(veetor[numUsuarios].senha, "\n")] = '\0';
@@ -87,17 +87,17 @@ void cadastro(struct myDados veetor[10], int numUsuarios)
     inicio(veetor, numUsuarios);
 }
 
-void login(struct myDados veetor[10], int numUsuarios)
+void login(myDados veetor[10], int numUsuarios)
 {
     system("cls");
     int usuarioConectado;
     char usuarioLogin[16];
     char senhaLogin[16];
     puts("digite seu usuario: ");
-    fgets(usuarioLogin, 9, stdin);
+    fgets(usuarioLogin, 16, stdin);
     fflush(stdin);
     puts("digite sua senha: ");
-    fgets(senhaLogin, 9, stdin);
+    fgets(senhaLogin, 16, stdin);
     fflush(stdin);
     
     if (numUsuarios > 0)
@@ -186,7 +186,7 @@ void nomePetShop()
     puts("Super PetShop Gustavo BCC");
 }
 
-void menu(struct myDados veetor[10], int usuarioConectado)
+void menu(myDados veetor[10], int usuarioConectado)
 {
     nomePetShop();
     int value;
@@ -230,7 +230,7 @@ void menu(struct myDados veetor[10], int usuarioConectado)
     }
 }
 
-void cadastrarCliente(struct myDados veetor[10], int usuarioConectado)
+void cadastrarCliente(myDados veetor[10], int usuarioConectado)
 {
     nomePetShop();
     char sOn = "n";
@@ -276,7 +276,7 @@ void cadastrarCliente(struct myDados veetor[10], int usuarioConectado)
     menu(veetor, usuarioConectado);
 }
 
-void banhoTosa(struct myDados veetor[10], int usuarioConectado)
+void banhoTosa(myDados veetor[10], int usuarioConectado)
 {
     // system("cls");
     nomePetShop();
@@ -366,7 +366,7 @@ void banhoTosa(struct myDados veetor[10], int usuarioConectado)
     menu(veetor, usuarioConectado);
 }
 
-void consulta(struct myDados veetor[10], int usuarioConectado)
+void consulta(myDados veetor[10], int usuarioConectado)
 {
     system("cls");
     nomePetShop();
@@ -467,7 +467,7 @@ void consulta(struct myDados veetor[10], int usuarioConectado)
     menu(veetor, usuarioConectado);
 }
 
-void relatorioGeral(struct myDados veetor[10], int usuarioConectado)
+void relatorioGeral(myDados veetor[10], int usuarioConectado)
 {
     system("cls");
     nomePetShop();
@@ -521,7 +521,7 @@ void relatorioGeral(struct myDados veetor[10], int usuarioConectado)
     menu(veetor, usuarioConectado);
 }
 
-void diaConsulta(struct myDados veetor[10], int usuarioConectado, int j, char *text)
+void diaConsulta(myDados veetor[10], int usuarioConectado, int j, char *text)
 {
     switch (veetor[usuarioConectado].consulta[j - 1][1])
     {
