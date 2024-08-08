@@ -1,0 +1,11 @@
+/** {
+    height: 100%;
+}*/
+body{
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    color:black;
+    background-image: linear-gradient(to bottom right, fuchsia, lawngreen);
+    /*color:;*/
+    /*background-image: radial-gradient(circle, red, yellow, green, fuchsia,black);*/
+}
