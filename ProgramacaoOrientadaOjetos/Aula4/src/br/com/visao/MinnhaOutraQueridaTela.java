@@ -154,7 +154,7 @@ public class MinnhaOutraQueridaTela extends javax.swing.JFrame {
 
     Calculos c = new Calculos();
 
-    private void getValues() {
+    private void getValues() { //herança?? *with*
         c.setValor(Double.valueOf(jTvalor1.getText()));
         c.setValor2(Double.valueOf(jTvalor2.getText()));
     }
