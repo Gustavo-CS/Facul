@@ -9,13 +9,8 @@ package br.com.controle;
  * @author gustavo.santos2023
  */
 public class Compras {
-//    private double valorCompra;
     private double somaCompras;
     private int numCompra500_700;
-
-//    public void setValorCompra(double valorCompra) {
-//        this.valorCompra = valorCompra;
-//    }
 
     public double getSomaCompras() {
         return somaCompras;
