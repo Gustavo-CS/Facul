@@ -6,6 +6,9 @@ package br.com.entidade;
 
 import java.sql.PreparedStatement;
 import br.com.controle.Aluno;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 
 /**
  *
@@ -24,5 +27,27 @@ public class ManterAluno extends DAO {
         } catch (Exception e) {
             System.out.println("Erro " + e.getMessage());
         }
-    } 
+    }
+    
+    public ArrayList<Aluno> PesquisarTudo () throws Exception {
+        ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+         try{
+         abrirBanco();  
+         String query = "select codigo, nome FROM alunos";
+         pst = (PreparedStatement) con.prepareStatement(query);
+         ResultSet tr = pst.executeQuery();
+         Aluno a ;
+         while (tr.next()){               
+           a = new Aluno();
+           a.setCodigo(tr.getInt("codigo"));
+           a.setNome(tr.getString("nome"));
+           alunos.add(a);
+         } 
+         fecharBanco();
+       }catch (Exception e){
+           System.out.println("Erro " + e.getMessage());
+     } 
+       return alunos;
+     }
+          
 }
