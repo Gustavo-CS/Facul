@@ -1,0 +1,2 @@
+se impar meio
+se par ponta
