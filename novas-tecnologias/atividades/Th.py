@@ -13,7 +13,7 @@ def TowerOfHanoi(n , source, destination, auxiliary):
     TowerOfHanoi(n-1, auxiliary, destination, source)
         
 # Driver code
-n = 5
+n = 15
 TowerOfHanoi(n,'A','B','C') 
 print("num mov ", mov)
 # A, C, B are the name of rods
