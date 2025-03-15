@@ -1,0 +1,5 @@
+button {
+    /* display: flex; */
+    transform: scale(2, 2);
+    margin: 0 50px;
+}
