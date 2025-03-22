@@ -1,5 +1,6 @@
 def funcao():
     tam = 0
+    aux = 1
     try:
         num = int(input("digite um numero: "))
         # if num < 10000 or num > 99999:
