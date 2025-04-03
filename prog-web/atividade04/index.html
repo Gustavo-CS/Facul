@@ -6,19 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body id="body">
     <h2>Adicionar item à tabela</h2>
     <input type="text" id="nText" name="nText" placeholder="Digite um item">
-    <button id="botaoAd">Adicionar</button>
-    <h3>tabela de itens</p>
-    <button id="botaoRe">Resetar página</button>
-    <div id="final"></div>
+    <button onclick="adicionarItem()">Adicionar</button>
+    <br><br>
+    <label for="itemSelect">Selecione um item:</label>
+    <select id="itemSelect"></select>
+    <br><br>
     <div>
-        <button id="botaoList">adicionar item</button>
+      <button onclick="marcarItem()">Marcar</button>
+      <button onclick="desmarcarItem()">Desmarcar</button>
+      <button onclick="removerItem()">Remover</button>
     </div>
-    <div id="final2"></div>
+    <br>
+    <table id="tabelaItens">
+        <tr>
+          <th>tabela de itens</th>
+        </tr>
+        <tbody></tbody>
+        </tr>
+      </table>
+      <br><br>
 </body>
 
 </html>
